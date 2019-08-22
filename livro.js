@@ -48,7 +48,18 @@ window.onload = () => {
     errorPlacement: function(error, element) {
       element.parent().parent().find('.error').append(error).addClass('animated shake')
     },
-    errorClass: 'cor-do-erro'
+    errorClass: 'cor-do-erro',
+    submitHandler: function(form){
+      console.log(form)
+      let formSerializado = $(form).serialize()
+      console.log(formSerializado)
+
+      fetch("http://localhost:8080/bookteca-api/src/teste.php").then(function(retorno){
+        retorno.json()
+      }).then(function(json){
+        alert(json)
+      })
+    }
   })
 
 }
